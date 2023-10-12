@@ -56,7 +56,7 @@ const ProgressTitle = styled.span`
 function ConsumeInfo() {
     const diet = getDietInfo();
     return (
-        <Card width="70vw" height="40vh">
+        <Card width="70vw" height="35vh">
             <ConsumeInfoContainer>
                 <DateContainer>
                     <DateButtonContainer>

@@ -5,14 +5,19 @@ import './App.css';
 import Navbar from './components/NavbarSection/Navbar';
 import WeightInfo from './components/WeightSection/WeightInfo';
 import ConsumeInfo from './components/ConsumeSection/ConsumeInfo';
+import WeightProgressInfo from './components/WeightProgressSection/WeightProgressInfo';
 
 const Container = styled.div`
-    display: flex;      // Usa flexbox para a organização
-    flex-wrap: wrap;    // Permite que os items "quebrem" para a próxima linha
-    justify-content: space-between;  // Espaçamento entre os cards
+    align-items: space-around;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     /*max-width: 450px;   // Largura máxima (2 cards + margens)*/
     padding: 30px;
-    margin: 20px auto;  // Margem central
+    margin: 20px auto;
+    & > :nth-child(3) {
+        margin-top: 20px; 
+    }
 `;
 
 function App() {
@@ -23,6 +28,7 @@ function App() {
       <Container>
         <WeightInfo />
         <ConsumeInfo />
+        <WeightProgressInfo />
       </Container>
       </div>
     </Router>

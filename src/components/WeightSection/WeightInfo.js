@@ -20,7 +20,7 @@ const WeightIconsContainer = styled.div`
 function WeightInfo() {
     const user = getLoggedInUser();
     return (
-        <Card width="20vw" height="40vh">
+        <Card width="20vw" height="35vh">
             <WelcomeTitle />
             <WeightIconsContainer>
                 <WeightIcon 
