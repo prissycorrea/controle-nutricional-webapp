@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import './App.css';
 import Navbar from './components/NavbarSection/Navbar';
 import WeightInfo from './components/WeightSection/WeightInfo';
+import ConsumeInfo from './components/ConsumeSection/ConsumeInfo';
 
 const Container = styled.div`
     display: flex;      // Usa flexbox para a organização
@@ -21,6 +22,7 @@ function App() {
       <Navbar />
       <Container>
         <WeightInfo />
+        <ConsumeInfo />
       </Container>
       </div>
     </Router>
