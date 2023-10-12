@@ -7,7 +7,7 @@ import { ReactComponent as MetricsIcon } from '../../images/icons/metrics-icon.s
 import { ReactComponent as DiaryIcon} from '../../images/icons/diary-icon.svg';
 import { ReactComponent as TableIcon} from '../../images/icons/fruit-icon.svg';
 import { ReactComponent as RecipeIcon} from '../../images/icons/restaurant-icon.svg';
-import ProfileImage from '../../images/profile_picture.jpg';
+import { getLoggedInUser } from '../../services/userData'
 
 const MenuContainer = styled.div`
     display: flex;
@@ -25,6 +25,7 @@ const MenuLinksContainer = styled.div`
 `;
 
 const Navbar = () => {
+    const user = getLoggedInUser();
     return (
         <MenuContainer>
             <Logo img={Logotipo} />
@@ -34,7 +35,7 @@ const Navbar = () => {
                 <MenuLink icon={TableIcon} text="Tabela Nutricional" to="/tabela" />
                 <MenuLink icon={RecipeIcon} text="Receitas" to="/receitas" />
             </MenuLinksContainer>
-            <ProfileDropdown image={ProfileImage} />
+            <ProfileDropdown image={user.profileImage} />
         </MenuContainer>
     )
 }

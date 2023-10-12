@@ -1,18 +1,27 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+import styled from '@emotion/styled';
 import './App.css';
-import Card from './components/Card';
 import Navbar from './components/NavbarSection/Navbar';
+import WeightInfo from './components/WeightSection/WeightInfo';
+
+const Container = styled.div`
+    display: flex;      // Usa flexbox para a organização
+    flex-wrap: wrap;    // Permite que os items "quebrem" para a próxima linha
+    justify-content: space-between;  // Espaçamento entre os cards
+    /*max-width: 450px;   // Largura máxima (2 cards + margens)*/
+    padding: 30px;
+    margin: 20px auto;  // Margem central
+`;
 
 function App() {
   return (
     <Router>
       <div className="App">
       <Navbar />
-        <Card width="300px" height="400px">
-          <h2>Meu Card</h2>
-          <button>Clique Aqui</button>
-        </Card>
+      <Container>
+        <WeightInfo />
+      </Container>
       </div>
     </Router>
   );
