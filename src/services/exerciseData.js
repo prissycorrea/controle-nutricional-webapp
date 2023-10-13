@@ -1,4 +1,4 @@
-export const getExerciseData = () => {
+export function getExerciseData() {
     return [
         {
             name: "Corrida",

@@ -1,4 +1,3 @@
-
 export function getDietInfo() {
     return {
         totalCalories: 2000,

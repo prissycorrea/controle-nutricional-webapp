@@ -1,14 +1,19 @@
 import Card from '../Card';
 import {getExerciseData} from '../../services/exerciseData';
 import SectionTitle from '../SectionTitle';
+import ExerciseLabel from './ExerciseLabel';
 
 const ExerciseInfo = () => {
-    const exercise = getExerciseData();
+    const exercises = getExerciseData();
     return (
         <Card width="20vw" height="30vh">
         <SectionTitle>Exercício</SectionTitle>
-            <h2>{exercise.name}</h2>
-            <p>{exercise.description}</p>
+            {exercises.map(exercise => (
+                <div key={exercise.name}>
+                    <ExerciseLabel exerciseName={exercise.name} />
+                    <p>{exercise.description}</p>
+                </div>
+            ))}
         </Card>
     );
 };
