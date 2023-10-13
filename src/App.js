@@ -6,6 +6,7 @@ import Navbar from './components/NavbarSection/Navbar';
 import WeightInfo from './components/WeightSection/WeightInfo';
 import ConsumeInfo from './components/ConsumeSection/ConsumeInfo';
 import WeightProgressInfo from './components/WeightProgressSection/WeightProgressInfo';
+import ExerciseInfo from './components/ExerciseSection/ExerciseInfo';
 
 const Container = styled.div`
     align-items: space-around;
@@ -18,6 +19,9 @@ const Container = styled.div`
     & > :nth-child(3) {
         margin-top: 20px; 
     }
+    & > :nth-child(4) {
+        margin-top: 20px; 
+    }
 `;
 
 function App() {
@@ -28,6 +32,7 @@ function App() {
       <Container>
         <WeightInfo />
         <ConsumeInfo />
+        <ExerciseInfo />
         <WeightProgressInfo />
       </Container>
       </div>

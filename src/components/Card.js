@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 const StyledCard = styled.div`
   background-color: #232323;
-  border-radius: 10px;
+  border-radius: 40px;
   padding: 20px;
   color: white;
   display: flex;
