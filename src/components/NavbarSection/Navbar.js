@@ -7,6 +7,7 @@ import { ReactComponent as MetricsIcon } from '../../images/icons/metrics-icon.s
 import { ReactComponent as DiaryIcon} from '../../images/icons/diary-icon.svg';
 import { ReactComponent as TableIcon} from '../../images/icons/fruit-icon.svg';
 import { ReactComponent as RecipeIcon} from '../../images/icons/restaurant-icon.svg';
+import { ReactComponent as DietMenu} from '../../images/icons/restaurant-menu-icon.svg';
 import { getLoggedInUser } from '../../services/userData'
 
 const MenuContainer = styled.div`
@@ -32,6 +33,7 @@ const Navbar = () => {
             <MenuLinksContainer>
                 <MenuLink icon={MetricsIcon} text="Métricas" to="/" />
                 <MenuLink icon={DiaryIcon} text="Registro Diário" to="/diario" />
+                <MenuLink icon={DietMenu} text="Cardápio" to="/cardapio" />
                 <MenuLink icon={TableIcon} text="Tabela Nutricional" to="/tabela" />
                 <MenuLink icon={RecipeIcon} text="Receitas" to="/receitas" />
             </MenuLinksContainer>
