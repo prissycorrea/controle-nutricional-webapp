@@ -6,7 +6,7 @@ const CustomButton = styled.button`
     border-radius: 10px;
     color: #000000;
     cursor: pointer;
-    font-size: 1.2em;
+    font-size: 1.1em;
     font-weight: 600;
     padding: 10px 20px;
     transition: 0.3s;
