@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { ReactComponent as SearchIcon } from '../../images/icons/search-icon.svg';
-import InsertButton from '../InsertButton';
+import SubmitButton from '../SubmitButton';
 import { searchProducts } from '../../api/api';
 import ProductDetails from './ProductDetails';
 
@@ -68,10 +68,10 @@ const SearchBar = ({ onSearch }) => {
                 onChange={handleSearchChange}
             />
             <IconContainer>
-                <SearchIcon />
+                
+        <SubmitButton onClick={handleSearchSubmit} icon={SearchIcon}>Buscar</SubmitButton>
             </IconContainer>
         </SearchContainer>
-        <InsertButton onClick={handleSearchSubmit}>Buscar</InsertButton>
     </div>
   );
 };
