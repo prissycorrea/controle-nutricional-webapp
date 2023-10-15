@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { ReactComponent as SearchIcon } from '../../images/icons/search-icon.svg';
+import InsertButton from '../InsertButton';
+import { searchProducts } from '../../api/api';
+import ProductDetails from './ProductDetails';
 
 const SearchContainer = styled.div`
   background-color: #EFEFEF;
@@ -38,18 +41,38 @@ const IconContainer = styled.div`
   margin-left: 8px;
 `;
 
-const SearchBar = ({ onSearchChange }) => {
+const SearchBar = ({ onSearch }) => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [productData, setProductData] = useState(null);  // Estado para armazenar os dados do produto obtidos
+
+  const handleSearchChange = (event) => {
+      setSearchTerm(event.target.value);
+  }
+
+  const handleSearchSubmit = async () => {
+    const results = await searchProducts(searchTerm);
+    if (results && results.length > 0) {
+      onSearch(results[0]);  // Enviando o resultado para o componente pai
+    }
+    console.log(results);  
+    console.log('Produtos retornados:', results);
+  }
+
   return (
-    <SearchContainer>
-      <SearchInput 
-        type="text" 
-        placeholder="Buscar um alimento" 
-        onChange={onSearchChange}
-      />
-        <IconContainer>
-            <SearchIcon />
-        </IconContainer>
-    </SearchContainer>
+    <div>
+        <SearchContainer>
+            <SearchInput 
+                type="text" 
+                placeholder="Buscar um alimento" 
+                value={searchTerm}
+                onChange={handleSearchChange}
+            />
+            <IconContainer>
+                <SearchIcon />
+            </IconContainer>
+        </SearchContainer>
+        <InsertButton onClick={handleSearchSubmit}>Buscar</InsertButton>
+    </div>
   );
 };
 
