@@ -15,6 +15,7 @@ const MenuContainer = styled.div`
     gap: 15px;
     justify-content: space-between;
     padding: 20px;
+    height: 10%;
 `;
 
 const MenuLinksContainer = styled.div`

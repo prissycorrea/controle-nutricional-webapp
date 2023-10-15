@@ -23,7 +23,7 @@ const CustomSubmitButton = styled.button`
 export default function SubmitButton({ children, icon: Icon, ...props }) {
     return (
         <CustomSubmitButton type="submit" {...props}>
-            {Icon && <Icon />}  {/* Renderização condicional do ícone */}
+            {Icon && <Icon />}
             {children}
         </CustomSubmitButton>
     );

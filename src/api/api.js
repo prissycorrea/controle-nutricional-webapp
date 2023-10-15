@@ -3,7 +3,7 @@ import axios from 'axios';
 const proxyURL = "https://cors-anywhere.herokuapp.com/";
 const BASE_URL = proxyURL + 'https://world.openfoodfacts.org/cgi';
 
-export const searchProducts = async (query, pageSize = 10) => {
+export const searchProducts = async (query, pageSize = 100) => {
     try {
         const response = await axios.get(`${BASE_URL}/search.pl`, {
             params: {

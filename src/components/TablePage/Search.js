@@ -15,6 +15,8 @@ const SearchContainer = styled.div`
   padding: 8px 16px;
   border-radius: 50px; 
   width: 40%;
+  margin-bottom: 40px;
+  height: 10%;
   &:hover {
     border: 2px solid #CBFF45;
   }
@@ -37,40 +39,48 @@ const SearchInput = styled.input`
   }
 `;
 
+const SearchForm = styled.form`
+  display: flex;
+  align-items: center;
+  width: 100%;
+`;
+
 const IconContainer = styled.div`
   margin-left: 8px;
 `;
 
 const SearchBar = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [productData, setProductData] = useState(null);  // Estado para armazenar os dados do produto obtidos
 
   const handleSearchChange = (event) => {
       setSearchTerm(event.target.value);
   }
 
-  const handleSearchSubmit = async () => {
-    const results = await searchProducts(searchTerm);
-    if (results && results.length > 0) {
-      onSearch(results[0]);  // Enviando o resultado para o componente pai
+  const handleSearchSubmit = async (event) => {
+    event.preventDefault();
+    const products = await searchProducts(searchTerm);
+    if (products && products.length > 0) {
+      onSearch(products);
     }
-    console.log(results);  
-    console.log('Produtos retornados:', results);
-  }
+    console.log('Produtos retornados:', products);
+    setSearchTerm('');
+}
+
 
   return (
     <div>
         <SearchContainer>
-            <SearchInput 
-                type="text" 
-                placeholder="Buscar um alimento" 
-                value={searchTerm}
-                onChange={handleSearchChange}
-            />
-            <IconContainer>
-                
-        <SubmitButton onClick={handleSearchSubmit} icon={SearchIcon}>Buscar</SubmitButton>
-            </IconContainer>
+            <SearchForm onSubmit={handleSearchSubmit}>   {/* Adicionado um formulário para lidar com a tecla "Enter" */}
+                <SearchInput 
+                    type="text" 
+                    placeholder="Buscar um alimento" 
+                    value={searchTerm}
+                    onChange={handleSearchChange}
+                />
+                <IconContainer>
+                    <SubmitButton type="submit" icon={SearchIcon}>Buscar</SubmitButton>
+                </IconContainer>
+            </SearchForm>
         </SearchContainer>
     </div>
   );

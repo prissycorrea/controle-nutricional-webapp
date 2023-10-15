@@ -1,48 +1,57 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-const ProductContainer = styled.div`
+const ProductsContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  height: 75%;
+`;
+
+const ProductCard = styled.div`
+  display: flex;
+  border-radius: 20px;
   flex-direction: column;
   align-items: center;
-  border: 1px solid #ccc;
-  padding: 20px;
-  margin: 20px;
-  background-color: #fff;
-  width: 50%;
+  padding: 10px;
+  background-color: #232323;
+  width: 200px;
+  height: 270px;
+  justify-content: space-between;
 `;
 
 const ProductImage = styled.img`
-  width: 150px;
-  height: 150px;
+  max-height: 150px;
+  margin-bottom: 5px;
+  max-width: 150px;
+`;
+
+const BadgeContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: auto; /* Isso empurra o NutriScore para o fundo */
 `;
 
 const ProductTitle = styled.h2`
-  color: #000;
+  color: #EFEFEF;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: auto;
 `;
 
 const Badge = styled.span`
   background-color: #EFEFEF;
   padding: 5px 15px;
   border-radius: 20px;
-  margin: 10px 0;
   color: #979393;
 `;
 
 const NutriScore = styled.div`
-  /* Adicione estilos personalizados aqui */
-`;
-
-const NutritionTable = styled.table`
-  /* Adicione estilos personalizados aqui */
-`;
-
-const IngredientsList = styled.p`
-  color: #000;
-`;
-
-const Allergens = styled.p`
-  color: #000;
+  background-color: #EFEFEF;
+  padding: 5px 15px;
+  border-radius: 20px;
+  color: #979393;
 `;
 
 const ProductDetails = ({ productData = {} }) => {
@@ -50,61 +59,25 @@ const ProductDetails = ({ productData = {} }) => {
   const { 
       image_front_url, 
       product_name, 
-      brands, 
       quantity, 
-      labels_tags, 
-      nutrition_grade_fr, 
-      ingredients_text, 
-      allergens,
-      nutriments 
+      nutrition_grade_fr 
   } = productData;
 
   return (
-      <ProductContainer>
+    <ProductsContainer>
+      <ProductCard>
           <ProductImage src={image_front_url} alt={product_name} />
           <ProductTitle>
-              {product_name} - {brands} - {quantity}
+              {product_name} - {quantity}
           </ProductTitle>
-
-          {/* Renderizando as etiquetas do produto */}
-          {labels_tags && labels_tags.map((label, index) => 
-              <Badge key={index}>{label}</Badge>
-          )}
-
-          {/* Renderizando o NutriScore */}
-          <NutriScore>
-              {nutrition_grade_fr && nutrition_grade_fr.toUpperCase()}
-          </NutriScore>
-
-          {/* Renderizando os detalhes da tabela nutricional */}
-          <NutritionTable>
-              <tbody>
-                  <tr>
-                      <td>Calorias</td>
-                      <td>{nutriments && nutriments.energy_value} {nutriments && nutriments.energy_unit}</td>
-                  </tr>
-                  <tr>
-                      <td>Gorduras</td>
-                      <td>{nutriments && nutriments.fat} g</td>
-                  </tr>
-                  <tr>
-                      <td>Proteínas</td>
-                      <td>{nutriments && nutriments.proteins} g</td>
-                  </tr>
-                  {/* Você pode continuar adicionando outras linhas da tabela nutricional conforme necessário */}
-              </tbody>
-          </NutritionTable>
-          
-          {/* Renderizando os ingredientes */}
-          <IngredientsList>
-              Ingredients: {ingredients_text}
-          </IngredientsList>
-          
-          {/* Renderizando os alergênicos */}
-          <Allergens>
-              Alergênicos: {allergens}
-          </Allergens>
-      </ProductContainer>
+          <BadgeContainer>
+              <NutriScore>
+              <Badge>Nutri score</Badge>
+                  {nutrition_grade_fr && nutrition_grade_fr.toUpperCase()}
+              </NutriScore>
+          </BadgeContainer>
+      </ProductCard>
+    </ProductsContainer>
   );
 }
 
