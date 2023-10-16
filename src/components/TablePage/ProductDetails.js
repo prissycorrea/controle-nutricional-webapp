@@ -1,5 +1,11 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import nutriScoreA from '../../images/nutriscore/nutriscore-a.svg';
+import nutriScoreB from '../../images/nutriscore/nutriscore-b.svg';
+import nutriScoreC from '../../images/nutriscore/nutriscore-c.svg';
+import nutriScoreD from '../../images/nutriscore/nutriscore-d.svg';
+import nutriScoreE from '../../images/nutriscore/nutriscore-e.svg';
+import nutriScoreUnknown from '../../images/nutriscore/nutriscore-unknown.svg';
 
 const ProductsContainer = styled.div`
   display: flex;
@@ -27,9 +33,17 @@ const ProductImage = styled.img`
 
 const BadgeContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
-  margin-top: auto; /* Isso empurra o NutriScore para o fundo */
+  margin-top: auto;
+`;
+
+const NutriScoreBadge = styled.div`
+  width: 110px;  
+  height: 60px; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
 
 const ProductTitle = styled.h2`
@@ -40,19 +54,19 @@ const ProductTitle = styled.h2`
   margin-top: auto;
 `;
 
-const Badge = styled.span`
-  background-color: #EFEFEF;
-  padding: 5px 15px;
-  border-radius: 20px;
-  color: #979393;
-`;
+const getImageForNutriScore = grade => {
+  if (!grade) return nutriScoreUnknown;
 
-const NutriScore = styled.div`
-  background-color: #EFEFEF;
-  padding: 5px 15px;
-  border-radius: 20px;
-  color: #979393;
-`;
+  switch (grade.toLowerCase()) {
+    case 'a': return nutriScoreA;
+    case 'b': return nutriScoreB;
+    case 'c': return nutriScoreC;
+    case 'd': return nutriScoreD;
+    case 'e': return nutriScoreE;
+    default: return nutriScoreUnknown;
+  }
+}
+
 
 const ProductDetails = ({ productData = {} }) => {
   if (!productData) return null;
@@ -63,6 +77,8 @@ const ProductDetails = ({ productData = {} }) => {
       nutrition_grade_fr 
   } = productData;
 
+  const nutriScoreImage = getImageForNutriScore(nutrition_grade_fr);
+
   return (
     <ProductsContainer>
       <ProductCard>
@@ -71,10 +87,7 @@ const ProductDetails = ({ productData = {} }) => {
               {product_name} - {quantity}
           </ProductTitle>
           <BadgeContainer>
-              <NutriScore>
-              <Badge>Nutri score</Badge>
-                  {nutrition_grade_fr && nutrition_grade_fr.toUpperCase()}
-              </NutriScore>
+          <NutriScoreBadge style={{ backgroundImage: `url(${nutriScoreImage})` }} />
           </BadgeContainer>
       </ProductCard>
     </ProductsContainer>

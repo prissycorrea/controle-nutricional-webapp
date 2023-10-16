@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://world.openfoodfacts.org/api/v0',
+  baseURL: 'https://br.openfoodfacts.org',
   headers: {
     'Content-Type': 'application/json',
   },

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const proxyURL = "https://cors-anywhere.herokuapp.com/";
-const BASE_URL = proxyURL + 'https://world.openfoodfacts.org/cgi';
+const BASE_URL = proxyURL + 'https://br.openfoodfacts.org/cgi';
 
 export const searchProducts = async (query, pageSize = 100) => {
     try {

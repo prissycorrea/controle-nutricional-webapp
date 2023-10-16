@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 const CustomSubmitButton = styled.button`
     display: flex;
     align-items: center;
-    gap: 10px;  // Espaço entre o ícone e o texto
+    gap: 10px;
     background-color: #CBFF45;
     border: none;
     border-radius: 10px;
