@@ -52,7 +52,14 @@ const ProductTitle = styled.h2`
   text-align: center;
   margin-bottom: 10px;
   margin-top: auto;
+  max-height: 32px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
 `;
+
 
 const getImageForNutriScore = grade => {
   if (!grade) return nutriScoreUnknown;
