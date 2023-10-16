@@ -32,6 +32,8 @@ const PaginationControls = styled.div`
 
 const TextContainer = styled.div`
     color: #EFEFEF;
+    align-self: center;
+    margin: 0 10px;
 `;
 
 const NutriTable = () => {
@@ -61,19 +63,21 @@ const NutriTable = () => {
             </NutriTableContainer>
             {productData.length > PRODUCTS_PER_PAGE && (
                 <PaginationControls>
-                    <button 
+                    <PaginationButton 
+                        text="&lt;"
                         disabled={currentPage === 1}
                         onClick={() => setCurrentPage(currentPage - 1)}
                     >
                         &lt;
-                    </button>
+                    </PaginationButton>
                     <TextContainer>Página {currentPage} de {totalPages}</TextContainer>
-                    <button 
+                    <PaginationButton 
+                        text="&gt;"
                         disabled={currentPage * PRODUCTS_PER_PAGE >= productData.length}
                         onClick={() => setCurrentPage(currentPage + 1)}
                     >
                         &gt;
-                    </button>
+                    </PaginationButton>
                 </PaginationControls>
             )}
         </div>

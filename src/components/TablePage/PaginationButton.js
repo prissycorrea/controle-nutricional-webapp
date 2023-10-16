@@ -1,20 +1,26 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-const Button = styled.button`
+const PreviousNextButton = styled.button`
     background: none;
     border: none;
     cursor: pointer;
     outline: none;
-    font-size: 24px;
+    font-size: 32px;
     color: #CBFF45;
+    margin: 0 10px;
+
+    &:disabled {
+        color: #A0A0A0;
+        cursor: not-allowed;
+    }
 `;
 
-const PaginationButton = ({ icon }) => {
+const PaginationButton = ({ text, onClick, disabled }) => {
     return (
-        <Button>
-            {icon}
-        </Button>
+        <PreviousNextButton onClick={onClick} disabled={disabled}>
+            {text}
+        </PreviousNextButton>
     );
 };
 
